@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './app.tsx';
+import App from './app';
 
 export default () => <App/>;
 import './I18n';
@@ -16,7 +16,7 @@ export const mount = (Component, element = document.getElementById('app')) => {
     // @ts-ignore
     if (module.hot) {
         // @ts-ignore
-        module.hot.accept('./app', () => {
+        module.hot.accept('./app.tsx', () => {
             rootElement.render(<Component/>);
         });
     }
