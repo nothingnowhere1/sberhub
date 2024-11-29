@@ -1,7 +1,10 @@
 import React from 'react';
+import Authorization from './pages/Authorization';
 
-export default function App() {
-	return (
-		<div>qqqqqqqqqqqqqqqqqqq</div>
-	);
-}
+const App = () => {
+    return (
+        <Authorization/>
+    );
+};
+
+export default App;
