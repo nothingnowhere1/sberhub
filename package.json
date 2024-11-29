@@ -1,31 +1,31 @@
 {
-    "name": "sberhub",
-    "version": "0.0.0",
-    "main": "./src/index.tsx",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "brojs server --port=8099 --with-open-browser",
-        "build": "npm run clean && brojs build --dev",
-        "build:prod": "npm run clean && brojs build",
-        "clean": "rimraf dist"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": "",
-    "dependencies": {
-        "@brojs/cli": "^1.6.3",
-        "@emotion/react": "^11.13.5",
-        "@emotion/styled": "^11.13.5",
-        "@mui/icons-material": "^6.1.8",
-        "@mui/material": "^6.1.8",
-        "express": "^4.19.2",
-        "i18n": "^0.15.1",
-        "i18next": "^24.0.0",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1"
-    },
-    "devDependencies": {
-        "@types/react": "^18.3.12"
-    }
+  "name": "ConnectMe",
+  "version": "0.0.0",
+  "main": "./src/index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "brojs server --port=8099 --with-open-browser",
+    "build": "npm run clean && brojs build --dev",
+    "build:prod": "npm run clean && brojs build",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@brojs/cli": "^1.6.3",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/icons-material": "^6.1.8",
+    "@mui/material": "^6.1.8",
+    "express": "^4.19.2",
+    "i18n": "^0.15.1",
+    "i18next": "^24.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12"
+  }
 }
