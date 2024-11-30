@@ -6,13 +6,13 @@ import { Telegram, Facebook, Instagram, Twitter } from '@mui/icons-material';
 
 export default function AuthorizationFooter() {
     return (
-        <Stack direction={'row'} paddingX={6} paddingY={2}>
-            <Stack direction={'row'} gap={4}>
+        <Stack color={'#2D2F3E'} direction={'row'} paddingX={6} paddingY={2} justifyContent={'space-between'}>
+            <Stack direction={'row'} gap={8}>
                 <Stack>
                     <Typography fontWeight={700}>
                         Юридическая информация
                     </Typography>
-                    <Typography>
+                    <Typography marginTop={4}>
                         Политика конфиденциальности
                     </Typography>
                     <Typography>
@@ -26,7 +26,7 @@ export default function AuthorizationFooter() {
                     <Typography fontWeight={700}>
                         Социальные сети
                     </Typography>
-                    <Stack direction={'row'} gap={1}>
+                    <Stack marginTop={4} direction={'row'} gap={1}>
                         <Link noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Telegram sx={{
@@ -57,6 +57,20 @@ export default function AuthorizationFooter() {
                         </Link>
                     </Stack>
                 </Stack>
+            </Stack>
+            <Stack>
+                <Typography fontWeight={700}>
+                    Помощь
+                </Typography>
+                <Typography marginTop={4}>
+                    О нас
+                </Typography>
+                <Typography>
+                    Частые вопросы
+                </Typography>
+                <Typography>
+                    Контакты
+                </Typography>
             </Stack>
         </Stack>
     );
