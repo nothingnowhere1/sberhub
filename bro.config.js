@@ -4,7 +4,7 @@ module.exports = {
     apiPath: 'stubs/api',
     webpackConfig: {
         output: {
-            publicPath: `/static/sberhub/${process.env.VERSION || pkg.version}/`
+            publicPath: `/static/${process.env.VERSION ? 'sberhub' : pkg.name}/${process.env.VERSION || pkg.version}/`
         }
     },
     /* use https://admin.bro-js.ru/ to create config, navigations and features */
