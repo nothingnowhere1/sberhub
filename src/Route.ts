@@ -1,11 +1,10 @@
-import { JSX } from 'react';
-import AuthorizationHeader from './components/Authorization/AuthorizationHeader';
+import {JSX} from 'react';
 import Authorization from './pages/Authorization';
-import { BASE_URL } from './Env';
+import {BASE_URL} from './Env';
+import Main from './pages/Main';
 
 export enum AllowEnum {
-    ALL = 0,
-    AUTHORIZED = 1,
+    ALL = 0, AUTHORIZED = 1,
 }
 
 export interface RouteInterface {
@@ -15,21 +14,13 @@ export interface RouteInterface {
     component: () => JSX.Element;
 }
 
+export const MainUrl = `${BASE_URL}`;
 export const AuthUrl = `${BASE_URL}/login`;
 export const MaintenanceUrl = `${BASE_URL}/maintenance`;
 
-export const RoutePool: RouteInterface[] = [
-    {
-        allow: AllowEnum.AUTHORIZED,
-        url: `${BASE_URL}`,
-        maintenance: false,
-        component: AuthorizationHeader
-    },
-    {
-        allow: AllowEnum.ALL,
-        url: `${BASE_URL}/login`,
-        maintenance: false,
-        component: Authorization
-    }
-];
+export const RoutePool: RouteInterface[] = [{
+    allow: AllowEnum.AUTHORIZED, url: `${BASE_URL}`, maintenance: false, component: Main
+}, {
+    allow: AllowEnum.ALL, url: `${BASE_URL}/login`, maintenance: false, component: Authorization
+}];
 

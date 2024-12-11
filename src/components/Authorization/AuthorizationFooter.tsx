@@ -1,78 +1,80 @@
-import { Box, Stack, Typography } from '@mui/material';
+import {Box, Stack, Typography} from '@mui/material';
 import React from 'react';
 import Link from '../common/Link';
-import { Facebook, Instagram, Telegram, Twitter } from '@mui/icons-material';
-
+import {Facebook, Instagram, Telegram, Twitter} from '@mui/icons-material';
+import {useTranslation} from 'react-i18next';
 
 export default function AuthorizationFooter() {
-	return (
-		<Stack borderTop={'1px solid #2A2C3B'} color={'#2D2F3E'} direction={'row'} paddingX={10} paddingY={4}
-			   justifyContent={'space-between'}>
-			<Stack direction={'row'} gap={8}>
-				<Stack>
-					<Typography fontWeight={700}>
-						Юридическая информация
-					</Typography>
-					<Typography marginTop={4}>
-						Политика конфиденциальности
-					</Typography>
-					<Typography>
-						Условия использования
-					</Typography>
-					<Typography>
-						Политика в отношении файлов cookie
-					</Typography>
-				</Stack>
-				<Stack>
-					<Typography fontWeight={700}>
-						Социальные сети
-					</Typography>
-					<Stack marginTop={4} direction={'row'} gap={1}>
-						<Link noLinkStyles={true}>
-							<Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
-								<Telegram sx={{
-									color: 'white'
-								}} fontSize={'large'}/>
-							</Box>
-						</Link>
-						<Link noLinkStyles={true}>
-							<Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
-								<Facebook sx={{
-									color: 'white'
-								}} fontSize={'large'}/>
-							</Box>
-						</Link>
-						<Link noLinkStyles={true}>
-							<Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
-								<Twitter sx={{
-									color: 'white'
-								}} fontSize={'large'}/>
-							</Box>
-						</Link>
-						<Link noLinkStyles={true}>
-							<Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
-								<Instagram sx={{
-									color: 'white'
-								}} fontSize={'large'}/>
-							</Box>
-						</Link>
-					</Stack>
-				</Stack>
-			</Stack>
-			<Stack>
-				<Typography fontWeight={700}>
-					Помощь
-				</Typography>
-				<Typography marginTop={4}>
-					О нас
-				</Typography>
-				<Typography>
-					Частые вопросы
-				</Typography>
-				<Typography>
-					Контакты
-				</Typography>
-			</Stack>
-		</Stack>
-	);
+    const {t} = useTranslation();
+
+    return (
+        <Stack borderTop={'1px solid #2A2C3B'} color={'#2D2F3E'} direction={'row'} paddingX={10}
+               paddingY={4} justifyContent={'space-between'}>
+            <Stack direction={'row'} gap={8}>
+                <Stack>
+                    <Typography fontWeight={700}>
+                        {t('footer.info.title')}
+                    </Typography>
+                    <Typography marginTop={4}>
+                        {t('footer.info.ul.1')}
+                    </Typography>
+                    <Typography>
+                        {t('footer.info.ul.2')}
+                    </Typography>
+                    <Typography>
+                        {t('footer.info.ul.3')}
+                    </Typography>
+                </Stack>
+                <Stack>
+                    <Typography fontWeight={700}>
+                        {t('footer.contacts.title')}
+                    </Typography>
+                    <Stack marginTop={4} direction={'row'} gap={1}>
+                        <Link noLinkStyles={true}>
+                            <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
+                                <Telegram sx={{
+                                    color: 'white'
+                                }} fontSize={'large'}/>
+                            </Box>
+                        </Link>
+                        <Link noLinkStyles={true}>
+                            <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
+                                <Facebook sx={{
+                                    color: 'white'
+                                }} fontSize={'large'}/>
+                            </Box>
+                        </Link>
+                        <Link noLinkStyles={true}>
+                            <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
+                                <Twitter sx={{
+                                    color: 'white'
+                                }} fontSize={'large'}/>
+                            </Box>
+                        </Link>
+                        <Link noLinkStyles={true}>
+                            <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
+                                <Instagram sx={{
+                                    color: 'white'
+                                }} fontSize={'large'}/>
+                            </Box>
+                        </Link>
+                    </Stack>
+                </Stack>
+            </Stack>
+            <Stack>
+                <Typography fontWeight={700}>
+                    {t('footer.help.title')}
+                </Typography>
+                <Typography marginTop={4}>
+                    {t('footer.help.ul.1')}
+                </Typography>
+                <Typography>
+                    {t('footer.info.ul.2')}
+                </Typography>
+                <Typography>
+                    {t('footer.info.ul.3')}
+                </Typography>
+            </Stack>
+        </Stack>
+    );
 }

@@ -1,5 +1,9 @@
-import axios from 'axios/index';
+import {fetcher, useApi} from '../../core/api';
 
-export const apiUserAuth = async (data: any): Promise<any> => {
-	axios.post('/api/user/auth', data);
+export const apiUserReg = () => {
+    return useApi<RegisterDTO, any>((args) => fetcher({url: '/auth/register', method: 'POST', data: args}));
+};
+
+export const apiUserLog = () => {
+    return useApi<LoginDTO, any>((args) => fetcher({url: '/auth/login', method: 'POST', data: args}));
 };
