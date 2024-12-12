@@ -21,7 +21,16 @@ export const en = {
                 }
             }
         },
+        'main': {
+            'search': 'Search',
+            'text': {
+                1: 'is more than just a dating site; it is a platform for meaningful connections.',
+                2: 'Whether you are looking for a new friend, a casual date, or a long-term partner, this is the perfect place to start.',
+                3: 'We make it easy to find people who share your interests, values, and lifestyle.'
+            }
+        },
         'login': {
+            'title': 'or',
             'auth': {
                 'title': 'Log in',
                 'inputs': {
@@ -47,5 +56,7 @@ export const en = {
     zod: {
         'required': 'This field is required',
         'passwords_not_match': 'Passwords must match',
+        'min': 'Minimum length is {{number}} characters',
+        'email': 'Invalid email'
     }
 };

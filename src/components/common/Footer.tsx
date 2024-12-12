@@ -1,10 +1,10 @@
 import {Box, Stack, Typography} from '@mui/material';
 import React from 'react';
-import Link from '../common/Link';
+import Link from './Link';
 import {Facebook, Instagram, Telegram, Twitter} from '@mui/icons-material';
 import {useTranslation} from 'react-i18next';
 
-export default function AuthorizationFooter() {
+export default function Footer() {
     const {t} = useTranslation();
 
     return (
@@ -30,28 +30,28 @@ export default function AuthorizationFooter() {
                         {t('footer.contacts.title')}
                     </Typography>
                     <Stack marginTop={4} direction={'row'} gap={1}>
-                        <Link noLinkStyles={true}>
+                        <Link to={'/'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Telegram sx={{
                                     color: 'white'
                                 }} fontSize={'large'}/>
                             </Box>
                         </Link>
-                        <Link noLinkStyles={true}>
+                        <Link to={'/'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Facebook sx={{
                                     color: 'white'
                                 }} fontSize={'large'}/>
                             </Box>
                         </Link>
-                        <Link noLinkStyles={true}>
+                        <Link to={'/'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Twitter sx={{
                                     color: 'white'
                                 }} fontSize={'large'}/>
                             </Box>
                         </Link>
-                        <Link noLinkStyles={true}>
+                        <Link to={'/'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Instagram sx={{
                                     color: 'white'

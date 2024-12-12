@@ -9,8 +9,11 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LoginIcon from '@mui/icons-material/Login';
 import {AuthUrl, MainUrl} from '../../Route';
 import Link from './Link';
+import {useTranslation} from "react-i18next";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
+    const {t} = useTranslation();
     const {control} = useForm({
         defaultValues: {
             search: ''
@@ -21,10 +24,10 @@ export default function Header() {
         <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} paddingY={1} paddingX={6}
                bgcolor={'#FFD6EA'}>
             <Stack direction="row" alignItems={'center'} gap={10}>
-                <Link href={MainUrl} noLinkStyles>
+                <Link to={MainUrl} noLinkStyles>
                     <img height={'75px'} src={logo} alt="logo"/>
                 </Link>
-                <TextField control={control} name={'search'} label={'Поиск'} sx={{
+                <TextField control={control} name={'search'} label={t('main.search')} sx={{
                     '& .MuiInputBase-input': {
                         background: 'white'
                     }
@@ -47,11 +50,14 @@ export default function Header() {
                     </Button>
                 </Stack>
             </Stack>
-            <Button href={AuthUrl} sx={{
-                color: '#2D2F3E'
-            }}>
-                <LoginIcon fontSize={'large'}/>
-            </Button>
+            <Stack direction={'row'} alignItems={'center'} gap={4}>
+                <LanguageSelector/>
+                <Link to={AuthUrl} style={{
+                    color: '#2D2F3E'
+                }}>
+                    <LoginIcon fontSize={'large'}/>
+                </Link>
+            </Stack>
         </Stack>
     );
 }

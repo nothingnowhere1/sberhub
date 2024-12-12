@@ -13,7 +13,6 @@ export default function RegistrationMainSection() {
 
     const {control, handleSubmit, clearErrors} = useForm<RegistrationSchemaType>({
         resolver: zodResolver(RegistrationSchema),
-        reValidateMode: 'onBlur',
     });
 
     const {trigger, isLoading} = apiUserReg();

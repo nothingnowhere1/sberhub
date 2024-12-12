@@ -1,14 +1,14 @@
-import { Link as Base, LinkProps } from '@mui/material';
 import React from 'react';
+import {Link as Base, LinkProps} from "react-router-dom";
 
 interface Props extends LinkProps {
-	noLinkStyles?: boolean;
+    noLinkStyles?: boolean;
 }
 
-export default function Link({noLinkStyles, sx, ...props}: Props) {
-	return (
-		<Base sx={noLinkStyles ? {...sx, cursor: 'pointer', textDecoration: 'none', color: 'inherit'} : {
-			...sx, cursor: 'pointer'
-		}} {...props}/>
-	);
+export default function Link({noLinkStyles, style, ...props}: Props) {
+    return (
+        <Base style={noLinkStyles ? {...style, cursor: 'pointer', textDecoration: 'none', color: 'inherit'} : {
+            ...style, cursor: 'pointer'
+        }} {...props}/>
+    );
 }

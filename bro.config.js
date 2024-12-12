@@ -9,14 +9,14 @@ module.exports = {
     },
     /* use https://admin.bro-js.ru/ to create config, navigations and features */
     navigations: {
-        'ConnectMe.main': '/ConnectMe'
+        'connectme.main': '/connectme'
     },
     features: {
-        'ConnectMe': {
+        'connectme': {
             // add your features here in the format [featureName]: { value: string }
         }
     },
     config: {
-        'ConnectMe.api': '/api'
+        'connectme.api': '/api'
     }
 };

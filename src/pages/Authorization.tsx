@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import AuthorizationHeader from '../components/Authorization/AuthorizationHeader';
-import AuthorizationFooter from '../components/Authorization/AuthorizationFooter';
-import AuthorizationMain from '../components/Authorization/AuthorizationMain';
+import AuthorizationHeader from '../components/authorization/AuthorizationHeader';
+import Footer from '../components/common/Footer';
+import AuthorizationMain from '../components/authorization/AuthorizationMain';
 
 export default function Authorization() {
 
@@ -13,7 +13,7 @@ export default function Authorization() {
         <>
             <AuthorizationHeader/>
             <AuthorizationMain/>
-            <AuthorizationFooter/>
+            <Footer/>
         </>
     );
 }

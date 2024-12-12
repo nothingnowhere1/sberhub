@@ -1,9 +1,10 @@
 import React from 'react';
 import {Box, Stack} from '@mui/material';
 import main from '../../assets/main.jpg';
+import {useTranslation} from "react-i18next";
 
 export default function MainPageMain() {
-
+    const {t} = useTranslation();
 
     return (
         <Stack direction={'row'} gap={4} sx={{
@@ -19,12 +20,11 @@ export default function MainPageMain() {
             }}>
             	<span style={{
                     color: '#EF87AC', fontSize: '40px', fontWeight: '700'
-                }}>ConnectMe</span> — это больше, чем просто сайт знакомств; это платформа для значимых связей.
+                }}>ConnectMe</span> — {t('main.text.1')}
 
-                <p>Если вы ищете нового друга, случайное свидание или долгосрочного партнера, это идеальное место для
-                    начала.</p>
+                <p>{t('main.text.2')}</p>
 
-                <p>Мы упрощаем поиск людей, которые разделяют ваши увлечения, ценности и образ жизни.</p>
+                <p>{t('main.text.3')}</p>
             </Box>
         </Stack>
     );
