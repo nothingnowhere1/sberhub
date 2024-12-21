@@ -30,28 +30,28 @@ export default function Footer() {
                         {t('footer.contacts.title')}
                     </Typography>
                     <Stack marginTop={4} direction={'row'} gap={1}>
-                        <Link to={'/'} noLinkStyles={true}>
+                        <Link to={'/telegram'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Telegram sx={{
                                     color: 'white'
                                 }} fontSize={'large'}/>
                             </Box>
                         </Link>
-                        <Link to={'/'} noLinkStyles={true}>
+                        <Link to={'/facebook'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Facebook sx={{
                                     color: 'white'
                                 }} fontSize={'large'}/>
                             </Box>
                         </Link>
-                        <Link to={'/'} noLinkStyles={true}>
+                        <Link to={'/twitter'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Twitter sx={{
                                     color: 'white'
                                 }} fontSize={'large'}/>
                             </Box>
                         </Link>
-                        <Link to={'/'} noLinkStyles={true}>
+                        <Link to={'/instagram'} noLinkStyles={true}>
                             <Box padding={1} bgcolor={'black'} borderRadius={'100%'} width={'35px'} height={'35px'}>
                                 <Instagram sx={{
                                     color: 'white'

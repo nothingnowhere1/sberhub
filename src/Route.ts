@@ -15,13 +15,11 @@ export interface RouteInterface {
     component: () => JSX.Element;
 }
 
-export const MainUrl = `${BASE_URL}`;
-export const AuthUrl = `${BASE_URL}/login`;
 export const MaintenanceUrl = `${BASE_URL}/maintenance`;
 
-export const RoutePool: RouteInterface[] = [
-    {allow: AllowEnum.ALL, url: `${BASE_URL}`, maintenance: false, component: Main},
-    {allow: AllowEnum.ALL, url: `${BASE_URL}/login`, maintenance: false, component: Authorization},
-    {allow: AllowEnum.AUTHORIZED, url: `${BASE_URL}/personal`, maintenance: false, component: Personal}
-];
+export const RoutePool = {
+    MainURL: {allow: AllowEnum.ALL, url: `${BASE_URL}`, maintenance: false, component: Main},
+    AuthURl: {allow: AllowEnum.ALL, url: `${BASE_URL}/login`, maintenance: false, component: Authorization},
+    PersonalURL: {allow: AllowEnum.AUTHORIZED, url: `${BASE_URL}/personal`, maintenance: false, component: Personal}
+};
 

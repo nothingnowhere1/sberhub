@@ -10,10 +10,10 @@ export const languageSlice = createSlice({
     name: 'language',
     reducers: {
         toggleLanguage(state, action: PayloadAction<Languages>) {
-            state.language = action.payload;
-            i18n.changeLanguage(action.payload);
-            // const index = SUPPORTED_LANGUAGES.findIndex(lang => lang === state.language);
-            // state.language = index === SUPPORTED_LANGUAGES.length - 1 ? SUPPORTED_LANGUAGES[0] : SUPPORTED_LANGUAGES[index + 1]
+            //TODO ADD SNACKBAR
+            i18n.changeLanguage(action.payload)
+                .then(() => state.language = action.payload)
+                .catch(() => console.log('hui a ne smena language tebe'));
         },
     },
 })

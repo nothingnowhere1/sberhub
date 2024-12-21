@@ -1,12 +1,14 @@
 import {Controller, SubmitHandler, useForm} from 'react-hook-form';
 import {Box, Checkbox, FormControlLabel, Stack, Typography} from '@mui/material';
 import TextField from '../common/TextField';
-import React from 'react';
-import {apiUserReg} from '../../api/user/user.services';
+import React, {useCallback} from 'react';
 import {useTranslation} from "react-i18next";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {RegistrationSchema, RegistrationSchemaType} from "../../api/user/user.zod";
 import {LoadingButton} from '@mui/lab';
+import {RegistrationSchema, RegistrationSchemaType} from "../../model/user/user.zod";
+import {userApi} from "../../redux/service/user.services";
+import {useDispatch} from "react-redux";
+import {sessionSlice} from "../../redux/slices/session";
 
 export default function RegistrationMainSection() {
     const {t} = useTranslation();
@@ -15,13 +17,22 @@ export default function RegistrationMainSection() {
         resolver: zodResolver(RegistrationSchema),
     });
 
-    const {trigger, isLoading} = apiUserReg();
+    const [trigger, status] = userApi.useRegUserMutation();
 
-    const onSubmit: SubmitHandler<RegistrationSchemaType> = (e) => {
-        const {password_again, agree, ...data} = e;
-        trigger(data)
-            .then((data) => console.log(data))
-            .catch((e) => console.log(e));
+    const dispatch = useDispatch()
+    const postSession = useCallback((session: userLoginDto) => {
+        dispatch(sessionSlice.actions.setSession(session))
+    }, [])
+
+    const onSubmit: SubmitHandler<RegistrationSchemaType> = async (e) => {
+        try {
+            const {agree, password_again, ...data} = e;
+            const payload = await trigger(data).unwrap();
+            postSession(payload)
+        } catch (e) {
+            // todO snackbor
+            console.error(e)
+        }
     };
 
     const handleChange = () => {
@@ -58,7 +69,7 @@ export default function RegistrationMainSection() {
                         />
                     }/>
                 </Box>
-                <LoadingButton loading={isLoading} type={'submit'} variant={'contained'} sx={{
+                <LoadingButton loading={status.isLoading} type={'submit'} variant={'contained'} sx={{
                     backgroundColor: '#2C2C2C', textTransform: 'none', paddingY: 1.5
                 }}>
                     {t("login.reg.button")}

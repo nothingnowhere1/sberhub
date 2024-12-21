@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import {API_URL, HEADERS_KEY} from '../Env';
+import {fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 const axiosInstance: AxiosInstance = axios.create();
 
@@ -30,6 +31,16 @@ export const fetcher = async (init: AxiosRequestConfig) => {
         return await Promise.reject(error);
     }
 };
+
+export const reduxFetcher = () => {
+    return fetchBaseQuery({
+        baseUrl: API_URL,
+        prepareHeaders: (headers) => {
+            headers.set('projectkey', `${HEADERS_KEY}`);
+            return headers;
+        },
+    });
+}
 
 export const useApi = <Request, Response>(fetcher: (args: Request) => Promise<Response>) => {
     const [isLoading, setLoading] = useState<boolean>(false);

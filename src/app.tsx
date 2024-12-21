@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {RoutePool} from './Route';
 import MiddlewareRoute from './components/common/MiddlewareRoute';
 import './basestyles.css';
@@ -11,7 +11,9 @@ const App = () => {
         <Provider store={store}>
             <BrowserRouter>
                 <Routes>
-                    {RoutePool.map((el) => <Route key={el.url} path={el.url} Component={() => MiddlewareRoute(el)}/>)}
+                    {Object.values(RoutePool).map((el) => <Route key={el.url} path={el.url}
+                                                                 Component={() => MiddlewareRoute(el)}/>)}
+                    <Route path="*" Component={() => <Navigate to={RoutePool.MainURL.url}/>}/>
                 </Routes>
             </BrowserRouter>
         </Provider>

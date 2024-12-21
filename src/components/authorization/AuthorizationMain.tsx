@@ -9,7 +9,7 @@ export default function AuthorizationMain() {
 
     return (
         <>
-            <Stack direction={'row'} height={'100%'}
+            <Stack paddingY={6} direction={'row'} height={'100%'}
                    alignItems={'center'}
                    justifyContent={'space-evenly'}>
                 <AuthorizationMainSection/>

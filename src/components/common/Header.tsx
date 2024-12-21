@@ -7,7 +7,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LoginIcon from '@mui/icons-material/Login';
-import {AuthUrl, MainUrl} from '../../Route';
+import {RoutePool} from '../../Route';
 import Link from './Link';
 import {useTranslation} from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
@@ -24,7 +24,7 @@ export default function Header() {
         <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} paddingY={1} paddingX={6}
                bgcolor={'#FFD6EA'}>
             <Stack direction="row" alignItems={'center'} gap={10}>
-                <Link to={MainUrl} noLinkStyles>
+                <Link to={RoutePool.MainURL.url} noLinkStyles>
                     <img height={'75px'} src={logo} alt="logo"/>
                 </Link>
                 <TextField control={control} name={'search'} label={t('main.search')} sx={{
@@ -52,7 +52,7 @@ export default function Header() {
             </Stack>
             <Stack direction={'row'} alignItems={'center'} gap={4}>
                 <LanguageSelector/>
-                <Link to={AuthUrl} style={{
+                <Link to={RoutePool.AuthURl.url} style={{
                     color: '#2D2F3E'
                 }}>
                     <LoginIcon fontSize={'large'}/>
