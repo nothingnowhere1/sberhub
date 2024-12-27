@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import {RoutePool} from './Route';
-import MiddlewareRoute from './components/common/MiddlewareRoute';
 import './basestyles.css';
 import {Provider} from "react-redux";
-import {store} from "./redux/store";
+import MiddlewareRoute from "./common/components/MiddlewareRoute/MiddlewareRoute";
+import {store} from "./common/store/store";
 
 const App = () => {
     return (

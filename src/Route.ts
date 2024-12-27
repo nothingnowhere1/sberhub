@@ -1,8 +1,8 @@
 import {JSX} from 'react';
-import Authorization from './pages/Authorization';
 import {BASE_URL} from './Env';
-import Main from './pages/Main';
-import Personal from "./pages/Personal";
+import Personal from "./modules/user/Personal";
+import Main from "./modules/main/Main";
+import Authorization from "./modules/auth/Authorization";
 
 export enum AllowEnum {
     ALL = 0, AUTHORIZED = 1,
