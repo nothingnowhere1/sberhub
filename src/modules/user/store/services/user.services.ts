@@ -55,7 +55,6 @@ export const userApi = createApi({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled;
-                    console.log(data);
                     dispatch(sessionSlice.actions.setAll({...data, token: arg}));
                 } catch (error) {
                     console.error('Failed to fetch data: ', error);

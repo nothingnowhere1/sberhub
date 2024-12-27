@@ -12,9 +12,8 @@ export const languageSlice = createSlice({
     reducers: {
         toggleLanguage(state, action: PayloadAction<Languages>) {
             //TODO ADD SNACKBAR
-            i18n.changeLanguage(action.payload)
-                .then(() => state.language = action.payload)
-                .catch(() => console.log('hui a ne smena language tebe'));
+            void i18n.changeLanguage(action.payload);
+            state.language = action.payload
         },
     },
 })

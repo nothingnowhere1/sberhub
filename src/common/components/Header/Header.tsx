@@ -1,5 +1,5 @@
 import {Button, Stack} from '@mui/material';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';

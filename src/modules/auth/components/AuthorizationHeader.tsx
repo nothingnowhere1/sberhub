@@ -1,7 +1,7 @@
 import React from 'react';
 import {Stack} from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 import Link from "../../../common/components/Link/Link";
 import {RoutePool} from "../../../Route";
 
