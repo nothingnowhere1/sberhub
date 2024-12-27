@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Stack} from '@mui/material';
-import main from '../../assets/main.jpg';
+import main from '../../../assets/main.jpg';
 import {useTranslation} from "react-i18next";
 
 export default function MainPageMain() {

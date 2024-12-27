@@ -5,10 +5,12 @@ import './basestyles.css';
 import {Provider} from "react-redux";
 import MiddlewareRoute from "./common/components/MiddlewareRoute/MiddlewareRoute";
 import {store} from "./common/store/store";
+import Snackbar from "./common/components/Snackbar/snackbar";
 
 const App = () => {
     return (
         <Provider store={store}>
+            <Snackbar/>
             <BrowserRouter>
                 <Routes>
                     {Object.values(RoutePool).map((el) => <Route key={el.url} path={el.url}

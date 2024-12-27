@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM, {Container} from 'react-dom/client';
 
 import App from './app';
-import './I18n';
+import './locales/I18n';
 
 export default () => <App/>;
 
