@@ -8,9 +8,9 @@ export default function Footer() {
     const {t} = useTranslation();
 
     return (
-        <Stack borderTop={'1px solid #2A2C3B'} color={'#2D2F3E'} direction={'row'} paddingX={10}
-               paddingY={4} justifyContent={'space-between'}>
-            <Stack direction={'row'} gap={8}>
+        <Stack borderTop={'1px solid #2A2C3B'} color={'#2D2F3E'} direction={{md: 'row', xs: 'column'}}
+               paddingX={{md: 10, xs: 4}} paddingY={4} justifyContent={'space-between'} gap={{md: 2, xs: 4}}>
+            <Stack direction={{md: 'row', xs: "column"}} gap={{md: 8, xs: 4}}>
                 <Stack>
                     <Typography fontWeight={700}>
                         {t('footer.info.title')}

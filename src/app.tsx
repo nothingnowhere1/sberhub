@@ -6,18 +6,31 @@ import {Provider} from "react-redux";
 import MiddlewareRoute from "./common/components/MiddlewareRoute/MiddlewareRoute";
 import {store} from "./common/store/store";
 import Snackbar from "./common/components/Snackbar/snackbar";
+import {createTheme, ThemeProvider} from "@mui/material";
+
+const Theme = (createTheme(
+    {
+        // palette: {
+        //     primary: {
+        //         main: '#FFD6EA',
+        //     },
+        // },
+    },
+))
 
 const App = () => {
     return (
         <Provider store={store}>
-            <Snackbar/>
-            <BrowserRouter>
-                <Routes>
-                    {Object.values(RoutePool).map((el) => <Route key={el.url} path={el.url}
-                                                                 Component={() => MiddlewareRoute(el)}/>)}
-                    <Route path="*" Component={() => <Navigate to={RoutePool.MainURL.url}/>}/>
-                </Routes>
-            </BrowserRouter>
+            <ThemeProvider theme={Theme}>
+                <Snackbar/>
+                <BrowserRouter>
+                    <Routes>
+                        {Object.values(RoutePool).map((el) => <Route key={el.url} path={el.url}
+                                                                     Component={() => MiddlewareRoute(el)}/>)}
+                        <Route path="*" Component={() => <Navigate to={RoutePool.MainURL.url}/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </ThemeProvider>
         </Provider>
     );
 };
