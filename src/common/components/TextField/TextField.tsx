@@ -17,11 +17,14 @@ export const TextFieldForm = <T extends FieldValues>({
                                                      }: Props<T>) => {
 
     const baseSx = {
+        color: 'black',
         '& .MuiOutlinedInput-notchedOutline': {
             borderRadius: '8px', border: '1px solid #D9D9D9', '&:hover': {
                 borderColor: '#000'
             }
-        }, '& .MuiInputBase-input': {
+        },
+        '& .MuiOutlinedInput-root': {borderRadius: '8px'},
+        '& .MuiInputBase-input': {
             paddingY: 1.5, paddingX: 2, borderRadius: '8px'
         }, '& .MuiInputLabel-root': {
             lineHeight: '16px !important', fontSize: '16px !important'

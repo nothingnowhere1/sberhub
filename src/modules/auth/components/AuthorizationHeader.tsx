@@ -9,7 +9,8 @@ import {RoutePool} from "../../../Route";
 export default function AuthorizationHeader() {
 
     return (
-        <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} paddingY={2} paddingX={10}
+        <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} paddingY={2}
+               paddingX={{md: 10, xs: 4}}
                bgcolor={'#FFD6EA'}>
             <Link to={RoutePool.MainURL.url} noLinkStyles>
                 <img height={'100px'} src={logo} alt="logo"/>

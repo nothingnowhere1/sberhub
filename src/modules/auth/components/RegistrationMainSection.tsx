@@ -1,5 +1,5 @@
 import {Controller, SubmitHandler, useForm} from 'react-hook-form';
-import {Box, Checkbox, FormControlLabel, Stack, Typography} from '@mui/material';
+import {Box, Checkbox, FormControl, FormControlLabel, Stack, Typography, useMediaQuery} from '@mui/material';
 import React, {useCallback} from 'react';
 import {useTranslation} from "react-i18next";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -19,6 +19,8 @@ export default function RegistrationMainSection() {
     });
 
     const [trigger, status] = userApi.useRegUserMutation();
+
+    const isTablet = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
     const dispatch = useDispatch()
     const postSession = useCallback((session: userLoginDto) => {
@@ -41,7 +43,9 @@ export default function RegistrationMainSection() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl onSubmit={handleSubmit(onSubmit)} sx={{
+            width: isTablet ? '100%' : 'auto',
+        }}>
             <Stack padding={3} border={'1px solid #D9D9D9'} sx={{
                 background: '#FFFFFF'
             }} gap={3}>
@@ -58,7 +62,7 @@ export default function RegistrationMainSection() {
                            autoComplete={'new-password'} type="password"
                            label={t("login.reg.inputs.4")}/>
                 <Box sx={{
-                    maxWidth: '400px',
+                    maxWidth: {md: '400px'},
                 }}>
                     <Controller control={control} name={'agree'} render={({field, fieldState}) =>
                         <FormControlLabel
@@ -71,11 +75,11 @@ export default function RegistrationMainSection() {
                     }/>
                 </Box>
                 <LoadingButton loading={status.isLoading} type={'submit'} variant={'contained'} sx={{
-                    backgroundColor: '#2C2C2C', textTransform: 'none', paddingY: 1.5
+                    backgroundColor: '#2C2C2C', textTransform: 'none', paddingY: 1.5, color: 'white',
                 }}>
                     {t("login.reg.button")}
                 </LoadingButton>
             </Stack>
-        </form>
+        </FormControl>
     );
 }
