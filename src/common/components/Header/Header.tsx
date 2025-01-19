@@ -24,7 +24,7 @@ export default function Header() {
             </Link>
             <Stack direction={'row'} alignItems={'center'} gap={4}>
                 <LanguageSelector/>
-                <Link to={RoutePool.AuthURl.url} style={{
+                <Link to={RoutePool.AuthURL.url} style={{
                     color: '#2D2F3E'
                 }}>
                     <LoginIcon fontSize={'large'}/>

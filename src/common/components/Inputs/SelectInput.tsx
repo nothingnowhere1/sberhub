@@ -17,6 +17,7 @@ export const SelectInput = <T extends FieldValues>({
                                                        defaultValue,
                                                        items,
                                                        name,
+                                                       margin,
                                                        ...props
                                                    }: ControlledFieldProps<T>) => {
     const customSX = {
@@ -27,7 +28,7 @@ export const SelectInput = <T extends FieldValues>({
     };
 
     return (
-        <FormControl margin={'normal'} fullWidth>
+        <FormControl margin={margin ?? 'normal'} fullWidth>
             <InputLabel>{props.label}</InputLabel>
             <Controller
                 defaultValue={defaultValue ?? '' as PathValue<T, (Path<T> & string)>}

@@ -24,7 +24,7 @@ export default function MiddlewareRoute({allow, maintenance, component}: RouteIn
         );
     }
 
-    if (!auth) return <Navigate to={RoutePool.AuthURl.url}/>;
+    if (!auth) return <Navigate to={RoutePool.AuthURL.url}/>;
 
     if (isLoadingCheck) {
         return <Spinner sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
@@ -32,7 +32,7 @@ export default function MiddlewareRoute({allow, maintenance, component}: RouteIn
 
     if (!dataCheck) {
         window.localStorage.removeItem('token');
-        return <Navigate to={RoutePool.AuthURl.url}/>
+        return <Navigate to={RoutePool.AuthURL.url}/>
     }
 
     return (

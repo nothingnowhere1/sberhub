@@ -36,7 +36,9 @@ export const userApi = createApi({
             },
         }),
         getUser: builder.query<userDto, { id: TypeID, token: string }>({
-            providesTags: ['CheckUser'],
+            providesTags: (result, error, arg) => [
+                {type: 'User', id: arg.id ?? 0},
+            ],
             query: ({id, token}) => {
                 return {
                     url: `/users/${id}`,
