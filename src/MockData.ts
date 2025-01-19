@@ -1,0 +1,22 @@
+export const cities = [
+    {"id": 1, "title": "Moscow"},
+    {"id": 2, "title": "Saint Petersburg"},
+    {"id": 3, "title": "Novosibirsk"},
+    {"id": 4, "title": "Yekaterinburg"},
+    {"id": 5, "title": "Kazan"},
+    {"id": 6, "title": "Nizhny Novgorod"},
+    {"id": 7, "title": "Chelyabinsk"},
+    {"id": 8, "title": "Samara"},
+    {"id": 9, "title": "Omsk"},
+    {"id": 10, "title": "Rostov-on-Don"},
+    {"id": 11, "title": "Ufa"},
+    {"id": 12, "title": "Krasnoyarsk"},
+    {"id": 13, "title": "Perm"},
+    {"id": 14, "title": "Voronezh"},
+    {"id": 15, "title": "Volgograd"},
+    {"id": 16, "title": "Krasnodar"},
+    {"id": 17, "title": "Tyumen"},
+    {"id": 18, "title": "Izhevsk"},
+    {"id": 19, "title": "Barnaul"},
+    {"id": 20, "title": "Vladivostok"}
+];
