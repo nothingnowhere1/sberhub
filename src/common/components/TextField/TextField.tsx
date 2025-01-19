@@ -36,7 +36,7 @@ export const TextFieldForm = <T extends FieldValues>({
         <Controller control={control} name={name}
                     defaultValue={(defaultValue ?? '') as PathValue<T, (Path<T> & string)>}
                     render={({field: {onChange: fieldOnChange, ...field}, fieldState: {error}}) => (
-                        <Base sx={combinedSx} {...props} onChange={(e) => {
+                        <Base margin={'normal'} sx={combinedSx} {...props} onChange={(e) => {
                             if (onChange) onChange(e);
                             fieldOnChange(e);
                         }} {...field} error={!!error} helperText={error ? error?.message : undefined}/>

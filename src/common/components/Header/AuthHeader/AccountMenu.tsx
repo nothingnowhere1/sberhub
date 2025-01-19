@@ -57,7 +57,7 @@ export default function AccountMenu({onClose, anchorEl}: Props) {
                 <AccountCard/>
                 <Divider/>
                 <MenuItem>
-                    <Link noLinkStyles to={'/personal'}>
+                    <Link noLinkStyles to={'/connectme/personal'}>
                         <ListItemIcon><Person fontSize="small"/></ListItemIcon>
                         Профиль
                     </Link>

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Navigate} from 'react-router-dom';
-import {CircularProgress} from "@mui/material";
 import {AllowEnum, MaintenanceUrl, RouteInterface, RoutePool} from "../../../Route";
 import {userApi} from "../../../modules/user/store/services/user.services";
+import {Spinner} from "../Spinner/Spinner";
 
 export default function MiddlewareRoute({allow, maintenance, component}: RouteInterface) {
     const auth = window.localStorage.getItem('token');
@@ -26,7 +26,9 @@ export default function MiddlewareRoute({allow, maintenance, component}: RouteIn
 
     if (!auth) return <Navigate to={RoutePool.AuthURl.url}/>;
 
-    if (isLoadingCheck) return <CircularProgress/>
+    if (isLoadingCheck) {
+        return <Spinner sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+    }
 
     if (!dataCheck) {
         window.localStorage.removeItem('token');

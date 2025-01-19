@@ -1,21 +1,21 @@
 import {useSelector} from "react-redux";
 import {userSession} from "../../../modules/user/store/selectors/session";
-import {SxProps, Theme} from "@mui/material";
+import {AvatarProps} from "@mui/material";
 import React from "react";
 import Avatar from "./Avatar";
 
-interface Props {
+type Props = {
     size?: number;
-    sx?: SxProps<Theme>;
-}
+} & Omit<AvatarProps, 'src'>
 
-export default function UserAvatar({size = 40, sx}: Props) {
+export default function UserAvatar({size = 40, ...props}: Props) {
     const data = useSelector(userSession);
-
-    if (!data) return <Avatar size={size} sx={sx}/>;
+    
+    if (!data) return <Avatar {...props} size={size}/>;
     return (
         <Avatar
-            size={size} sx={sx}
+            {...props}
+            size={size}
             src={data.map_data?.avatar ?? undefined}
         />
     );

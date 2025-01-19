@@ -20,3 +20,5 @@ export const AuthorizationSchema = z.object({
 });
 
 export type AuthorizationSchemaType = z.infer<typeof AuthorizationSchema>;
+
+export const UpdateSchema = z.object({name: ZodRequired.string().min(1).optional()})
