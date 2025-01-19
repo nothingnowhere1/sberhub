@@ -1,23 +1,15 @@
-import {Avatar as MuiAvatar, SxProps, Theme} from '@mui/material';
-import React from 'react';
+import {Avatar as MuiAvatar, AvatarProps} from '@mui/material';
+import React, {ReactNode} from 'react';
 
-interface Props {
-    size?: number;
-    sx?: SxProps<Theme>;
-    name?: string | null,
-    letters?: string | null
-    color?: any | null,
-    src?: string | null,
-    icon?: any | null
-}
+type Props = { size?: number, name?: string, letters?: string, icon?: ReactNode } & AvatarProps
 
-export default function Avatar({size = 40, sx, name, letters, color, src, icon}: Props) {
+export default function Avatar({size = 40, sx, name, letters, color, src, icon, ...props}: Props) {
     const styles = {width: size, height: size, ...sx};
 
-    if (src) return <MuiAvatar sx={styles} src={src}/>;
+    if (src) return <MuiAvatar sx={styles} src={src} {...props}/>;
 
     if (letters) {
-        return <MuiAvatar sx={{...styles, bgcolor: color}}>
+        return <MuiAvatar sx={{...styles, bgcolor: color}} {...props}>
             {letters}
         </MuiAvatar>;
     }
@@ -26,16 +18,16 @@ export default function Avatar({size = 40, sx, name, letters, color, src, icon}:
         const [firstName, lastName] = name.split(' ');
         const formattedName = `${firstName ? firstName[0] : ''}${lastName ? lastName[0] : ''}`.trim();
 
-        return <MuiAvatar sx={{...styles, bgcolor: color}}>
+        return <MuiAvatar sx={{...styles, bgcolor: color}} {...props}>
             {formattedName}
         </MuiAvatar>;
     }
 
     if (icon) {
-        return <MuiAvatar sx={{...styles}}>
+        return <MuiAvatar sx={{...styles}} {...props}>
             {icon}
         </MuiAvatar>;
     }
 
-    return <MuiAvatar sx={styles}/>;
+    return <MuiAvatar sx={styles} {...props}/>;
 }
