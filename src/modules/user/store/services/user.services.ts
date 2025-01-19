@@ -8,7 +8,7 @@ import {TypeID} from "../../../../common/types/baseTypes";
 export const userApi = createApi({
     reducerPath: 'user-api',
     baseQuery: reduxFetcher(),
-    tagTypes: ['User', 'CheckUser'],
+    tagTypes: ['User', 'CheckUser', 'Users'],
     endpoints: (builder) => ({
         loginUser: builder.mutation<userLoginDto, AuthorizationSchemaType>({
             query: (body) => ({
@@ -40,6 +40,16 @@ export const userApi = createApi({
             query: ({id, token}) => {
                 return {
                     url: `/users/${id}`,
+                    method: 'GET',
+                    headers: {authorization: `Bearer ${token}`},
+                }
+            },
+        }),
+        getUserList: builder.query<{ count: number, data: userDto[] }, { token: string }>({
+            providesTags: ['Users'],
+            query: ({token}) => {
+                return {
+                    url: `/users`,
                     method: 'GET',
                     headers: {authorization: `Bearer ${token}`},
                 }
