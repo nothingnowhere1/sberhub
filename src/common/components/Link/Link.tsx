@@ -7,7 +7,13 @@ interface Props extends LinkProps {
 
 export default function Link({noLinkStyles, style, ...props}: Props) {
     return (
-        <Base style={noLinkStyles ? {...style, cursor: 'pointer', textDecoration: 'none', color: 'inherit'} : {
+        <Base style={noLinkStyles ? {
+            ...style,
+            cursor: 'pointer',
+            textDecoration: 'none',
+            color: 'inherit',
+            display: 'inline-grid',
+        } : {
             ...style, cursor: 'pointer'
         }} {...props}/>
     );
