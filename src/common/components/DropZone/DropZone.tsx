@@ -5,6 +5,7 @@ import {Close, CloudUpload} from '@mui/icons-material';
 import {base} from "@uploadcare/upload-client";
 import {MEDIA_URL} from "../../../Env";
 import {enqueueSnackbar} from "../Snackbar/slice";
+import {useDispatch} from "react-redux";
 
 interface Props {
     onChange: (url: string | null) => void;
@@ -23,6 +24,7 @@ type statusTypes = 'processing' | 'finish' | 'noPhoto';
 export const DropZone = ({value, onChange}: Props) => {
     const [fileUrl, setFileUrl] = useState<string | null | undefined>(value);
     const [status, setStatus] = useState<statusTypes>('noPhoto');
+    const dispatch = useDispatch()
 
     const onDrop = async (acceptedFiles: File[]) => {
         if (acceptedFiles.length > 0) {
@@ -47,10 +49,10 @@ export const DropZone = ({value, onChange}: Props) => {
                 setStatus('finish')
             } catch (err) {
                 setStatus('noPhoto');
-                enqueueSnackbar({
+                dispatch(enqueueSnackbar({
                     message: 'Произошла ошибка при загрузке фото. Повторите загрузку.',
                     severity: 'error'
-                });
+                }));
             }
 
         }

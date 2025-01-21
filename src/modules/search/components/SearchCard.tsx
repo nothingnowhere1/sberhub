@@ -12,7 +12,9 @@ interface Props {
 export const SearchCard = ({user}: Props) => {
 
     return (
-        <Link noLinkStyles to={RoutePool.UserURL.generate(user._id)}>
+        <Link noLinkStyles to={RoutePool.UserURL.generate(user._id)} style={{
+            display: 'inline-grid',
+        }}>
             <Stack borderRadius={'8px'} bgcolor={'white'} padding={3} gap={1}>
                 <Avatar src={user.map_data?.avatar} variant={'square'} size={160} sx={{
                     alignSelf: 'center',

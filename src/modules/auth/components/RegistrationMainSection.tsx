@@ -10,6 +10,9 @@ import {userApi} from "../../user/store/services/user.services";
 import {userLoginDto} from "../../user/types/user.types";
 import {sessionSlice} from "../../user/store/slices/session";
 import TextField from "../../../common/components/TextField/TextField";
+import {RoutePool} from "../../../Route";
+import {enqueueSnackbar} from "../../../common/components/Snackbar/slice";
+import {useNavigate} from "react-router-dom";
 
 export default function RegistrationMainSection() {
     const {t} = useTranslation();
@@ -19,6 +22,8 @@ export default function RegistrationMainSection() {
     });
 
     const [trigger, status] = userApi.useRegUserMutation();
+
+    const navigate = useNavigate();
 
     const isTablet = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
@@ -32,9 +37,13 @@ export default function RegistrationMainSection() {
             const {agree, password_again, ...data} = e;
             const payload = await trigger(data).unwrap();
             postSession(payload)
+            navigate(RoutePool.PersonalURL.url)
         } catch (e) {
-            // todO snackbor
-            console.error(e)
+            if (e.message) {
+                dispatch(enqueueSnackbar({message: e.message, severity: 'error'}))
+                return;
+            }
+            dispatch(enqueueSnackbar({message: 'Ошибка при авторизации. Повторите позже.', severity: 'error'}))
         }
     };
 
@@ -48,7 +57,7 @@ export default function RegistrationMainSection() {
         }}>
             <Stack padding={3} border={'1px solid #D9D9D9'} sx={{
                 background: '#FFFFFF'
-            }} gap={3}>
+            }} gap={1}>
                 <Typography marginX={'auto'} fontSize={24} fontWeight={700}>{t("login.reg.title")}</Typography>
                 <TextField control={control} autoComplete={'username'} name={'email'} type="email"
                            label={t("login.reg.inputs.1")}/>

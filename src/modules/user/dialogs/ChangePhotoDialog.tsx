@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import {LoadingButton} from "@mui/lab";
 import {enqueueSnackbar} from "../../../common/components/Snackbar/slice";
 import {userApi} from "../store/services/user.services";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as sessionSelectors from "../store/selectors/session";
 
 interface Props {
@@ -19,14 +19,15 @@ export const ChangePhotoDialog = ({open, close}: Props) => {
     const [avatar, setAvatar] = useState<string | null>(null);
 
     const [trigger, status] = userApi.useUpdateUserMutation();
+    const dispatch = useDispatch()
 
     const onSubmit = () => {
         if (!avatar) {
-            enqueueSnackbar({message: 'Выберите фотографию', severity: 'error'})
+            dispatch(enqueueSnackbar({message: 'Выберите фотографию', severity: 'error'}))
             return;
         }
         if (!user || !token) {
-            enqueueSnackbar({message: 'Повторите позднее', severity: 'error'})
+            dispatch(enqueueSnackbar({message: 'Повторите позднее', severity: 'error'}))
             return;
         }
         trigger({

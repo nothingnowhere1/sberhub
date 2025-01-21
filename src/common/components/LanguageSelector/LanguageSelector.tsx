@@ -4,6 +4,7 @@ import {FormControl, MenuItem, Select, SelectChangeEvent, styled} from "@mui/mat
 import {Languages} from "../../../locales/I18n";
 import {languageSlice} from "./slice/language";
 import * as languageSelectors from "./selector/language";
+import {enqueueSnackbar} from "../Snackbar/slice";
 
 const StyledFormControl = styled(FormControl)(({theme}) => ({
     minWidth: theme.breakpoints.down('md') ? '100px' : '200px',
@@ -35,6 +36,7 @@ export default function LanguageSelector() {
 
     const handleLanguage = useCallback((lang: SelectChangeEvent<Languages>) => {
         dispatch(languageSlice.actions.toggleLanguage(lang.target.value as Languages))
+        dispatch(enqueueSnackbar({message: 'Язык изменен', severity: 'success'}))
     }, [])
 
     return (

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useRef} from "react"
+import React, {ChangeEvent, useEffect, useRef} from "react"
 import {Stack, TextField} from "@mui/material";
 import {useSearchParams} from "react-router-dom";
 
@@ -6,8 +6,16 @@ export const SearchHead = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const ref = useRef<NodeJS.Timeout | null>(null);
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const currentSearch = searchParams.get('search') || '';
+
+    useEffect(() => {
+        const search = searchParams.get('search');
+        if (search && inputRef.current && search !== inputRef.current.value) {
+            inputRef.current.value = search;
+        }
+    }, [searchParams.get('search')]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (ref.current) {
@@ -28,7 +36,8 @@ export const SearchHead = () => {
 
     return (
         <Stack>
-            <TextField fullWidth defaultValue={currentSearch} onChange={handleChange} label={'Поиск'}/>
+            <TextField inputRef={inputRef} fullWidth defaultValue={currentSearch} onChange={handleChange}
+                       label={'Поиск'}/>
         </Stack>
     )
 }

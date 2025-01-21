@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {dequeueSnackbar} from "./slice";
+import {dequeueSnackbar, enqueueSnackbar, historyShowed, SnackbarState} from "./slice";
 import {Box} from "@mui/material";
 import * as snackbarSelectors from './selector';
 
@@ -8,16 +8,39 @@ const SnackbarComponent = () => {
     const dispatch = useDispatch();
 
     const ref = useRef<Record<string, number>>({});
+    const lastSnackbars = useRef<SnackbarState[]>([]);
 
+    const needShowLastSnackbars = useSelector(snackbarSelectors.showAgain);
     const snackbars = useSelector(snackbarSelectors.getSnackbars);
+
+    useEffect(() => {
+        if (needShowLastSnackbars) {
+            dispatch(historyShowed());
+            lastSnackbars.current.forEach((snackbar) => {
+                dispatch(enqueueSnackbar(snackbar));
+                ref.current[snackbar.key] = window.setTimeout(() => {
+                    dispatch(dequeueSnackbar(snackbar));
+                }, snackbar.timeout);
+            })
+        }
+    }, [needShowLastSnackbars]);
 
     useEffect(() => {
         const arraySnackbars = Object.values(snackbars);
         if (arraySnackbars.length === 0) return
         arraySnackbars.forEach((snackbar) => {
             if (snackbar.key in ref.current) return;
+            if (!lastSnackbars.current.find((item) => item.key === snackbar.key)) {
+                if (lastSnackbars.current.length < 4) {
+                    lastSnackbars.current.push(snackbar);
+                } else {
+                    lastSnackbars.current.shift();
+                    lastSnackbars.current.push(snackbar);
+                }
+            }
             ref.current[snackbar.key] = window.setTimeout(() => {
                 dispatch(dequeueSnackbar(snackbar));
+                delete ref.current[snackbar.key];
             }, snackbar.timeout);
         })
     }, [snackbars, dispatch]);
@@ -26,6 +49,7 @@ const SnackbarComponent = () => {
         const key = e.currentTarget.id;
         if (key in ref.current) {
             clearTimeout(ref.current[key]);
+            delete ref.current[key];
             dispatch(dequeueSnackbar({key}));
         }
     }

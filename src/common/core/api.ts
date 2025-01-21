@@ -2,6 +2,8 @@ import {useState} from 'react';
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import {fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {API_URL, HEADERS_KEY} from "../../Env";
+import {RoutePool} from "../../Route";
+import {sessionSlice} from "../../modules/user/store/slices/session";
 
 const axiosInstance: AxiosInstance = axios.create();
 
@@ -65,3 +67,9 @@ export const useApi = <Request, Response>(fetcher: (args: Request) => Promise<Re
 
     return {trigger, data, error, isLoading};
 };
+
+export const SignOut = () => {
+    localStorage.removeItem('token');
+    sessionSlice.actions.signOut();
+    window.location.href = RoutePool.MainURL.url;
+}

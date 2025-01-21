@@ -3,7 +3,6 @@ import {initReactI18next} from 'react-i18next';
 import {en} from "./translation/en";
 import {ru} from "./translation/ru";
 
-
 export enum Languages {
     ru = 'ru',
     en = 'en'

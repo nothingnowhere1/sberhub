@@ -5,7 +5,7 @@ import React from "react";
 import {Button, MenuItem, Stack} from "@mui/material";
 import TextField from "../../../common/components/TextField/TextField";
 import {LoadingButton} from "@mui/lab";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as sessionSelectors from "../store/selectors/session";
 import {Spinner} from "../../../common/components/Spinner/Spinner";
 import {enqueueSnackbar} from "../../../common/components/Snackbar/slice";
@@ -34,15 +34,17 @@ export const PersonalMainEdit = ({handlePageChange}: { handlePageChange: () => v
         }
     });
 
+    const dispatch = useDispatch()
+
     const [trigger, status] = userApi.useUpdateUserMutation();
 
     const onSubmit = (data: userUpdateDto) => {
         trigger({...data, id: user._id, token: token})
             .then(handlePageChange)
-            .catch((err) => enqueueSnackbar({
+            .catch((err) => dispatch(enqueueSnackbar({
                 message: typeof err === 'string' ? err : 'Произошла ошибка',
                 severity: 'error'
-            }));
+            })));
     }
 
     return (

@@ -3,6 +3,7 @@ import React from 'react';
 import {Facebook, Instagram, Telegram, Twitter} from '@mui/icons-material';
 import {useTranslation} from 'react-i18next';
 import Link from "../Link/Link";
+import {RoutePool} from "../../../Route";
 
 export default function Footer() {
     const {t} = useTranslation();
@@ -15,15 +16,21 @@ export default function Footer() {
                     <Typography fontWeight={700}>
                         {t('footer.info.title')}
                     </Typography>
-                    <Typography marginTop={4}>
-                        {t('footer.info.ul.1')}
-                    </Typography>
-                    <Typography>
-                        {t('footer.info.ul.2')}
-                    </Typography>
-                    <Typography>
-                        {t('footer.info.ul.3')}
-                    </Typography>
+                    <Link to={RoutePool.Terms.url} noLinkStyles>
+                        <Typography marginTop={4}>
+                            {t('footer.info.ul.1')}
+                        </Typography>
+                    </Link>
+                    <Link to={RoutePool.Privacy.url} noLinkStyles>
+                        <Typography>
+                            {t('footer.info.ul.2')}
+                        </Typography>
+                    </Link>
+                    <Link to={RoutePool.Cookie.url} noLinkStyles>
+                        <Typography>
+                            {t('footer.info.ul.3')}
+                        </Typography>
+                    </Link>
                 </Stack>
                 <Stack>
                     <Typography fontWeight={700}>
@@ -65,15 +72,11 @@ export default function Footer() {
                 <Typography fontWeight={700}>
                     {t('footer.help.title')}
                 </Typography>
-                <Typography marginTop={4}>
-                    {t('footer.help.ul.1')}
-                </Typography>
-                <Typography>
-                    {t('footer.info.ul.2')}
-                </Typography>
-                <Typography>
-                    {t('footer.info.ul.3')}
-                </Typography>
+                <Link to={RoutePool.About.url} noLinkStyles>
+                    <Typography marginTop={4}>
+                        {t('footer.help.ul.1')}
+                    </Typography>
+                </Link>
             </Stack>
         </Stack>
     );

@@ -3,6 +3,7 @@ import {Logout, Person} from '@mui/icons-material';
 import {Divider, ListItemIcon, Menu, MenuItem, MenuProps, PaperProps} from '@mui/material';
 import {AccountCard} from "./AccountCard";
 import Link from "../../Link/Link";
+import {SignOut} from "../../../core/api";
 
 interface Props {
     onClose: () => void;
@@ -62,7 +63,7 @@ export default function AccountMenu({onClose, anchorEl}: Props) {
                         Профиль
                     </Link>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={SignOut}>
                     <ListItemIcon><Logout fontSize="small"/></ListItemIcon>
                     Выйти из аккаунта
                 </MenuItem>

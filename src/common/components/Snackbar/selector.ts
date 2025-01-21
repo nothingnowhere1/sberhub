@@ -4,4 +4,4 @@ import {rootSelector} from "../../store/selectors/root";
 const createSnackbarSelector = createSelector(rootSelector, state => state.snackbar)
 
 export const getSnackbars = createSelector(createSnackbarSelector, state => state.snackbars)
-
+export const showAgain = createSelector(createSnackbarSelector, state => state.showAgain)

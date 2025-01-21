@@ -11,6 +11,9 @@ import {sessionSlice} from "../../user/store/slices/session";
 import {userApi} from "../../user/store/services/user.services";
 import TextField from "../../../common/components/TextField/TextField";
 import Link from "../../../common/components/Link/Link";
+import {enqueueSnackbar} from "../../../common/components/Snackbar/slice";
+import {useNavigate} from "react-router-dom";
+import {RoutePool} from "../../../Route";
 
 
 export default function AuthorizationMainSection() {
@@ -19,6 +22,8 @@ export default function AuthorizationMainSection() {
     });
 
     const {t} = useTranslation();
+
+    const navigate = useNavigate();
 
     const isTablet = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
@@ -32,9 +37,13 @@ export default function AuthorizationMainSection() {
         try {
             const payload = await trigger(e).unwrap();
             postSession(payload)
+            navigate(RoutePool.PersonalURL.url)
         } catch (e) {
-            // todO snackbor
-            console.error(e)
+            if (e.data && e.data.message) {
+                dispatch(enqueueSnackbar({message: e.data.message, severity: 'error'}));
+                return;
+            }
+            dispatch(enqueueSnackbar({message: 'Ошибка при авторизации. Повторите позже.', severity: 'error'}))
         }
     };
 
@@ -45,7 +54,7 @@ export default function AuthorizationMainSection() {
             <Stack padding={3} border={'1px solid #D9D9D9'} sx={{
                 background: '#FFFFFF',
                 boxSizing: 'border-box',
-            }} gap={3} width={'100%'}>
+            }} gap={1} width={'100%'}>
                 <Typography marginX={'auto'} fontSize={24} fontWeight={700}>{t("login.auth.title")}</Typography>
                 <TextField sx={{
                     minWidth: {md: '300px'}
