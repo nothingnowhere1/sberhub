@@ -1,5 +1,5 @@
 import {Controller, SubmitHandler, useForm} from 'react-hook-form';
-import {Box, Checkbox, FormControl, FormControlLabel, Stack, Typography, useMediaQuery} from '@mui/material';
+import {Box, Checkbox, FormControlLabel, Stack, Typography, useMediaQuery} from '@mui/material';
 import React, {useCallback} from 'react';
 import {useTranslation} from "react-i18next";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -52,7 +52,7 @@ export default function RegistrationMainSection() {
     };
 
     return (
-        <FormControl onSubmit={handleSubmit(onSubmit)} sx={{
+        <form onSubmit={handleSubmit(onSubmit)} style={{
             width: isTablet ? '100%' : 'auto',
         }}>
             <Stack padding={3} border={'1px solid #D9D9D9'} sx={{
@@ -89,6 +89,6 @@ export default function RegistrationMainSection() {
                     {t("login.reg.button")}
                 </LoadingButton>
             </Stack>
-        </FormControl>
+        </form>
     );
 }
