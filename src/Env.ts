@@ -1,4 +1,8 @@
-export const BASE_URL = '/connectme';
-export const API_URL = 'https://antd-table-v2-backend.onrender.com/api';
+import {getConfig} from "@brojs/cli";
+import {ConfigType} from "../urls";
+
+const cliConfig: ConfigType = getConfig() as ConfigType;
+
+export const API_URL = cliConfig['ConnectMe.API_URL'];
 export const HEADERS_KEY = 'ConnectMe_627b30c377023f956d76';
-export const MEDIA_URL = 'https://ucarecdn.com/';
+export const MEDIA_URL = cliConfig['ConnectMe.MEDIA_URL'];

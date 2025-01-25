@@ -25,8 +25,8 @@ const App = () => {
                 <Snackbar/>
                 <BrowserRouter>
                     <Routes>
-                        {Object.values(RoutePool).map((el) => <Route key={el.url} path={el.url}
-                                                                     Component={() => MiddlewareRoute(el)}/>)}
+                        {Object.entries(RoutePool).map(([key, el]) => <Route key={key} path={el.url}
+                                                                             Component={() => MiddlewareRoute(el)}/>)}
                         <Route path="*" Component={() => <Navigate to={RoutePool.MainURL.url}/>}/>
                     </Routes>
                 </BrowserRouter>

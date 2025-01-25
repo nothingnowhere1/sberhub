@@ -9,7 +9,15 @@ module.exports = {
     },
     /* use https://admin.bro-js.ru/ to create config, navigations and features */
     navigations: {
-        'connectme.main': '/connectme'
+        "ConnectMe.main": "/ConnectMe",
+        "ConnectMe.auth": "/ConnectMe/login",
+        "ConnectMe.terms": "/ConnectMe/terms",
+        "ConnectMe.privacy": "/ConnectMe/privacy",
+        "ConnectMe.cookie": "/ConnectMe/cookie",
+        "ConnectMe.about": "/ConnectMe/about",
+        "ConnectMe.search": "/ConnectMe/search",
+        "ConnectMe.personal": "/ConnectMe/personal",
+        "ConnectMe.user": "/ConnectMe/user/:userId",
     },
     features: {
         'connectme': {
@@ -17,6 +25,7 @@ module.exports = {
         }
     },
     config: {
-        'connectme.api': '/api'
+        "ConnectMe.API_URL": "https://antd-table-v2-backend.onrender.com/api",
+        "ConnectMe.MEDIA_URL": "https://ucarecdn.com"
     }
 };
