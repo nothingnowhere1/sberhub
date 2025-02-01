@@ -2,9 +2,10 @@ import {Controller, SubmitHandler, useForm} from 'react-hook-form';
 import {Box, Checkbox, FormControlLabel, Stack, Typography, useMediaQuery} from '@mui/material';
 import React, {useCallback} from 'react';
 import {useTranslation} from "react-i18next";
+import {zodResolver} from "@hookform/resolvers/zod";
 import {LoadingButton} from '@mui/lab';
 import {useDispatch} from "react-redux";
-import {RegistrationSchemaType} from "../../user/types/user.zod";
+import {RegistrationSchema, RegistrationSchemaType} from "../../user/types/user.zod";
 import {userApi} from "../../user/store/services/user.services";
 import {userLoginDto} from "../../user/types/user.types";
 import {sessionSlice} from "../../user/store/slices/session";
@@ -16,7 +17,9 @@ import {useNavigate} from "react-router-dom";
 export default function RegistrationMainSection() {
     const {t} = useTranslation();
 
-    const {control, handleSubmit, clearErrors} = useForm<RegistrationSchemaType>({});
+    const {control, handleSubmit, clearErrors} = useForm<RegistrationSchemaType>({
+        resolver: zodResolver(RegistrationSchema),
+    });
 
     const [trigger, status] = userApi.useRegUserMutation();
 

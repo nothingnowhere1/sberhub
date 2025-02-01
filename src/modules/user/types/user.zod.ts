@@ -6,7 +6,7 @@ export const RegistrationSchema = z.object({
     password: ZodRequired.string().min(6, zodT('min', {number: 6})),
     password_again: ZodRequired.string().min(1, zodT('min', {number: 6})),
     name: ZodRequired.string(),
-    agree: ZodRequired.string().refine((val) => val)
+    agree: z.boolean().refine((val) => val)
 }).refine((data) => data.password === data.password_again, {
     message: zodT('passwords_not_match'),
     path: ['password_again'],
