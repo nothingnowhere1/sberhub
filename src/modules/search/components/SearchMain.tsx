@@ -7,8 +7,9 @@ import {Box, Grid2} from "@mui/material";
 export const SearchMain = () => {
 
     return (
-        <Grid2 display={'grid'} padding={6} gridTemplateAreas={`"header header" "nav main"`}
-               gridTemplateRows={'auto 1fr'} gap={6} gridTemplateColumns={'20% 1fr'}>
+        <Grid2 display={'grid'} padding={6}
+               gridTemplateAreas={{md: `"header header" "nav main"`, xs: '"header" "nav" "main"'}}
+               gridTemplateRows={'auto 1fr'} gap={6} gridTemplateColumns={{md: '300px 1fr', xs: '1fr'}}>
             <Box gridArea={'header'}>
                 <SearchHead/>
             </Box>

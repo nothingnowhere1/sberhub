@@ -27,12 +27,12 @@ export default function PersonalMain() {
     const handlePageChange = () => {
         setPageState(prev => prev === 'info' ? 'edit' : 'info');
     }
-
-
+    
     return (
         <>
             <Box padding={7}>
-                <Stack direction={'row'} padding={4} gap={8} borderRadius={'16px'} sx={{
+                <Stack flexDirection={{xs: 'column', md: 'row'}} padding={4} gap={8}
+                       alignItems={{xs: 'center', md: 'normal'}} borderRadius={'16px'} sx={{
                     background: '#ffffff'
                 }}>
                     <Stack gap={2}>

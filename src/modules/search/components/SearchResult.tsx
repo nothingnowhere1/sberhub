@@ -80,7 +80,13 @@ export const SearchResult = () => {
 
     return (
         <Stack height={'100%'} width={'100%'} justifyContent={'space-between'} gap={2}>
-            <Grid2 display={'grid'} gridTemplateColumns={'repeat(4,1fr)'} gap={2}>
+            <Grid2 display={'grid'}
+                   gridTemplateColumns={{
+                       lg: 'repeat(4,1fr)',
+                       md: 'repeat(3,1fr)',
+                       sm: 'repeat(2,1fr)',
+                       xs: 'repeat(1,1fr)'
+                   }} gap={2}>
                 {dataAfterParams.map((user) => (
                     <SearchCard key={user._id} user={user}/>
                 ))}
