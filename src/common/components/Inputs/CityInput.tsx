@@ -3,7 +3,8 @@ import {Control, FieldPath, FieldValues, Path, PathValue} from 'react-hook-form'
 import {MenuItem} from '@mui/material';
 import {SelectProps as BaseProps} from '@mui/material/Select/Select';
 import {SelectInput} from "./SelectInput";
-import {cities} from "../../../MockData";
+import axios from "axios";
+import {API_CITY} from "../../../Env";
 
 export type ControlledFieldProps<T extends FieldValues> = {
     control: Control<T>;
@@ -15,9 +16,9 @@ export const CityInput = <T extends FieldValues>(props: ControlledFieldProps<T>)
     const [dataCities, setDataCities] = useState<{ id: number; title: string }[] | null>(null);
 
     useEffect(() => {
-        if (window.location.href.includes('localhost')) {
-            setDataCities(cities)
-        }
+        axios.get(`${API_CITY}/cities`)
+            .then(r => r.data)
+            .then(r => setDataCities(r));
     }, []);
 
     return (

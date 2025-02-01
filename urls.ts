@@ -16,7 +16,8 @@ export type NavigationType = Record<NavigationsKey, string>;
 
 const config = {
     "ConnectMe.API_URL": "https://antd-table-v2-backend.onrender.com/api",
-    "ConnectMe.MEDIA_URL": "https://ucarecdn.com"
+    "ConnectMe.MEDIA_URL": "https://ucarecdn.com",
+    "ConnectMe.API_CITY": "/api"
 }
 
 type ConfigKey = keyof typeof config;

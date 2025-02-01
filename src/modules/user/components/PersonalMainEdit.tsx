@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {GendersText, SearchTypeText, userUpdateDto} from "../types/user.types";
+import {Genders, GendersText, SearchTypeText, userUpdateDto} from "../types/user.types";
 import {userApi} from "../store/services/user.services";
 import React from "react";
 import {Button, MenuItem, Stack} from "@mui/material";
@@ -23,13 +23,13 @@ export const PersonalMainEdit = ({handlePageChange}: { handlePageChange: () => v
             name: user.name,
             email: user.email,
             map_data: {
-                city: user.map_data.city,
-                searchType: user.map_data.searchType,
-                instagram: user.map_data.instagram,
-                gender: user.map_data.gender,
-                about: user.map_data.about,
-                avatar: user.map_data.avatar,
-                birthday: user.map_data.birthday
+                city: user?.map_data?.city ?? undefined,
+                searchType: user?.map_data?.searchType ?? undefined,
+                instagram: user?.map_data?.instagram ?? '',
+                gender: user?.map_data?.gender ?? Genders.NO,
+                about: user?.map_data?.about ?? '',
+                avatar: user?.map_data?.avatar ?? '',
+                birthday: user?.map_data?.birthday ?? undefined
             }
         }
     });
