@@ -42,7 +42,7 @@ export const DropZone = ({value, onChange}: Props) => {
                     }
                 )
 
-                const avatarUrl = `${MEDIA_URL}${result.file}/`;
+                const avatarUrl = `${MEDIA_URL}/${result.file}/`;
 
                 onChange(avatarUrl);
                 setFileUrl(avatarUrl)
