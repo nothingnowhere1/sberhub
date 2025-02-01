@@ -4,6 +4,7 @@ import {Divider, ListItemIcon, Menu, MenuItem, MenuProps, PaperProps} from '@mui
 import {AccountCard} from "./AccountCard";
 import Link from "../../Link/Link";
 import {SignOut} from "../../../core/api";
+import {RoutePool} from "../../../../Route";
 
 interface Props {
     onClose: () => void;
@@ -58,7 +59,7 @@ export default function AccountMenu({onClose, anchorEl}: Props) {
                 <AccountCard/>
                 <Divider/>
                 <MenuItem>
-                    <Link noLinkStyles to={'/connectme/personal'}>
+                    <Link noLinkStyles to={RoutePool.PersonalURL.url}>
                         <ListItemIcon><Person fontSize="small"/></ListItemIcon>
                         Профиль
                     </Link>
