@@ -2,6 +2,7 @@ import React from 'react';
 import {Favorite, Message, Shield} from '@mui/icons-material';
 import {Link} from "react-router-dom";
 import {RoutePool} from "../../Route";
+import Header from "../../common/components/Header/Header";
 
 export const About = () => {
     const styles = {
@@ -157,52 +158,57 @@ export const About = () => {
     ];
 
     return (
-        <div style={styles.container}>
-            <div style={styles.hero as any}>
-                <h1 style={styles.heroTitle}>Найдите свою любовь</h1>
-                <p style={styles.heroSubtitle}>
-                    Мы помогаем миллионам людей найти свою вторую половинку, создавая счастливые отношения каждый день
-                </p>
-            </div>
+        <>
+            <Header/>
+            <div style={styles.container}>
+                <div style={styles.hero as any}>
+                    <h1 style={styles.heroTitle}>Найдите свою любовь</h1>
+                    <p style={styles.heroSubtitle}>
+                        Мы помогаем миллионам людей найти свою вторую половинку, создавая счастливые отношения каждый
+                        день
+                    </p>
+                </div>
 
-            <div style={styles.statsContainer as any}>
-                {stats.map((stat, index) => (
-                    <div key={index} style={styles.statBox}>
-                        <div style={styles.statNumber}>{stat.number}</div>
-                        <div style={styles.statLabel}>{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-
-            <div style={styles.section}>
-                <h2 style={styles.sectionTitle as any}>Почему выбирают нас</h2>
-                <div style={styles.featuresGrid}>
-                    {features.map((feature, index) => (
-                        <div key={index} style={styles.featureCard as any}>
-                            <div style={styles.featureIcon}>{feature.icon}</div>
-                            <h3 style={styles.featureTitle}>{feature.title}</h3>
-                            <p style={styles.featureDescription}>{feature.description}</p>
+                <div style={styles.statsContainer as any}>
+                    {stats.map((stat, index) => (
+                        <div key={index} style={styles.statBox}>
+                            <div style={styles.statNumber}>{stat.number}</div>
+                            <div style={styles.statLabel}>{stat.label}</div>
                         </div>
                     ))}
                 </div>
-            </div>
 
-            <div style={styles.storySection as any}>
-                <h2 style={styles.sectionTitle as any}>Наша история</h2>
-                <p style={styles.storyText}>
-                    С 2015 года мы помогаем людям находить настоящую любовь. Начав как небольшой стартап,
-                    мы выросли в одну из крупнейших платформ для знакомств в мире. Наша миссия - создавать
-                    счастливые отношения, используя передовые технологии и глубокое понимание человеческих отношений.
-                </p>
-            </div>
+                <div style={styles.section}>
+                    <h2 style={styles.sectionTitle as any}>Почему выбирают нас</h2>
+                    <div style={styles.featuresGrid}>
+                        {features.map((feature, index) => (
+                            <div key={index} style={styles.featureCard as any}>
+                                <div style={styles.featureIcon}>{feature.icon}</div>
+                                <h3 style={styles.featureTitle}>{feature.title}</h3>
+                                <p style={styles.featureDescription}>{feature.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
-            <div style={styles.ctaSection as any}>
-                <h2 style={styles.ctaTitle}>Готовы найти свою любовь?</h2>
-                <Link to={RoutePool.MainURL.url} style={styles.ctaButton}>
-                    Начать знакомства
-                </Link>
+                <div style={styles.storySection as any}>
+                    <h2 style={styles.sectionTitle as any}>Наша история</h2>
+                    <p style={styles.storyText}>
+                        С 2015 года мы помогаем людям находить настоящую любовь. Начав как небольшой стартап,
+                        мы выросли в одну из крупнейших платформ для знакомств в мире. Наша миссия - создавать
+                        счастливые отношения, используя передовые технологии и глубокое понимание человеческих
+                        отношений.
+                    </p>
+                </div>
+
+                <div style={styles.ctaSection as any}>
+                    <h2 style={styles.ctaTitle}>Готовы найти свою любовь?</h2>
+                    <Link to={RoutePool.MainURL.url} style={styles.ctaButton}>
+                        Начать знакомства
+                    </Link>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

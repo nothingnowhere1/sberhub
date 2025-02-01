@@ -6,6 +6,7 @@ import Link from "../../Link/Link";
 import {RoutePool} from "../../../../Route";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 import UserAvatar from "../../Avatar/UserAvatar";
+import Sidebar from "../../Sidebar/Sidebar";
 
 export const MobileAuthHeader = () => {
     const [profileAnchor, setProfileAnchor] = useState<null | HTMLElement>(null);
@@ -16,6 +17,7 @@ export const MobileAuthHeader = () => {
     return (
         <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} paddingY={1} paddingX={2}
                bgcolor={'#FFD6EA'}>
+            <Sidebar/>
             <Stack direction="row" alignItems={'center'} gap={2}>
                 <Link to={RoutePool.MainURL.url} noLinkStyles>
                     <img height={'50px'} src={logo} alt="logo"/>
